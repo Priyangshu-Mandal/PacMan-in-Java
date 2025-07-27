@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-public class GamePanel extends JPanel implements ActionListener, KeyListener {
+public class GamePanel extends JPanel implements ActionListener, KeyListener, MouseListener {
     static final int COLUMNS = 19;
     static final int ROWS = 21;
     static final int TILE_SIZE = 32;
@@ -66,12 +66,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             {'X', 'X', 'X', 'X', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'X'},
             {'O', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'O'},
             {'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X'},
-            {'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'r', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X'},
-            {'X', ' ', 'X', 'X', ' ', 'X', 'X', 'X', 'p', 'y', 'b', 'X', 'X', 'X', ' ', 'X', 'X', ' ', 'X'},
             {'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X'},
+            {'X', ' ', 'X', 'X', ' ', 'X', 'X', 'X', 'X', 'r', 'X', 'X', 'X', 'X', ' ', 'X', 'X', ' ', 'X'},
+            {'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'p', 'y', 'b', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X'},
             {'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X'},
             {'X', ' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ', 'X'},
-            {'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X'},
+            {'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', ' ', 'X', ' ', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X'},
             {'O', 'O', 'O', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X', 'O', 'O', 'O'},
             {'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X', ' ', 'X', 'X', 'X', 'X'},
             {'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'P', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X'},
@@ -106,6 +106,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
         isMute = FileHandling.readingFromFile("MuteStatus.txt") == 1;
         this.setFocusable(true);
         addKeyListener(this);
+        addMouseListener(this);
         random = new Random();
         start(false);
     }
@@ -202,8 +203,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                     ghost.updateDirection(directions[random.nextInt(4)]);
                 } else if (ghost.x == 12 * TILE_SIZE && ghost.y == 13 * TILE_SIZE) {
                     ghost.updateDirection(directions[random.nextInt(4)]);
-                } else if (ghost.x == 4 * TILE_SIZE && ghost.y == 5 * TILE_SIZE) {
-                    ghost.updateDirection(directions[random.nextInt(4)]);
                 } else if (ghost.x == 17 * TILE_SIZE && ghost.y == 3 * TILE_SIZE) {
                     ghost.updateDirection(directions[random.nextInt(4)]);
                 } else if (ghost.x == TILE_SIZE && ghost.y == 3 * TILE_SIZE) {
@@ -217,6 +216,28 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
                 } else if (ghost.x == TILE_SIZE && ghost.y == 11 * TILE_SIZE) {
                     ghost.updateDirection(directions[random.nextInt(4)]);
                 } else if (ghost.x == 17 * TILE_SIZE && ghost.y == 11 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                } else if (ghost.x == 6 * TILE_SIZE && ghost.y == 11 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                } else if (ghost.x == 8 * TILE_SIZE && ghost.y == 11 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                }else if (ghost.x == 10 * TILE_SIZE && ghost.y == 11 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                }else if (ghost.x == 12 * TILE_SIZE && ghost.y == 11 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                }else if (ghost.x == 7 * TILE_SIZE && ghost.y == 3 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                }else if (ghost.x == 11 * TILE_SIZE && ghost.y == 3 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                } else if (ghost.x == 6 * TILE_SIZE && ghost.y == 9 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                } else if (ghost.x == 12 * TILE_SIZE && ghost.y == 9 * TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                }else if (ghost.x == TILE_SIZE && ghost.y == TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                }else if (ghost.x == 17 * TILE_SIZE && ghost.y == TILE_SIZE) {
+                    ghost.updateDirection(directions[random.nextInt(4)]);
+                } else if (ghost.x == TILE_SIZE && ghost.y == 5 * TILE_SIZE) {
                     ghost.updateDirection(directions[random.nextInt(4)]);
                 } else if (collision(pacman, ghost)) {
                     lives--;
@@ -420,6 +441,32 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {}
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int mouseX = e.getX();
+        int mouseY = e.getY();
+        if (((mouseX >= 20) && (mouseX <= 20 + mute.getWidth())) && ((mouseY >= SCREEN_HEIGHT+60) && ((mouseY <= SCREEN_HEIGHT+60+mute.getHeight())))){
+            isMute = !isMute;
+            if (isMute){
+                FileHandling.writingToFile("MuteStatus.txt", 1);
+            }
+            else {
+                FileHandling.writingToFile("MuteStatus.txt", 0);
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }
 
 class FileHandling{
